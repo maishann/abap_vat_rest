@@ -29,7 +29,7 @@ AT SELECTION-SCREEN OUTPUT.
     WHEN p_r01.
       LOOP AT SCREEN.
         IF screen-group1 = 'Z01'.
-          screen-input = 0.
+          screen-input  = 0.
           screen-active = 0.
           MODIFY SCREEN.
         ENDIF.
@@ -37,7 +37,7 @@ AT SELECTION-SCREEN OUTPUT.
     WHEN p_r02.
       LOOP AT SCREEN.
         IF screen-group1 = 'Z01'.
-          screen-input = 1.
+          screen-input  = 1.
           screen-active = 1.
           MODIFY SCREEN.
         ENDIF.
@@ -48,14 +48,18 @@ AT SELECTION-SCREEN OUTPUT.
 
 
 START-OF-SELECTION.
-
   CASE 'X'.
     WHEN p_r01.
-      DATA(out) = zcl_rest_resource=>get_method( ). "Aufruf
+      DATA(out) = zcl_rest_resource=>get_method( ). " Aufruf
     WHEN p_r02.
-      out = zcl_rest_resource=>post_method( EXPORTING iv_countrycode = CONV string( p_land ) iv_vatnumber = CONV string( p_vatid ) ).
+      out = zcl_rest_resource=>post_method( iv_countrycode = CONV string( p_land )
+                                            iv_vatnumber   = CONV string( p_vatid ) ).
     WHEN OTHERS.
   ENDCASE.
 
-  cl_demo_output=>write_data( out ).
-  cl_demo_output=>display( ).
+  IF zcl_rest_resource=>mo_appl_log IS BOUND.
+    zcl_rest_resource=>mo_appl_log->display( i_display_type = 'P'    ).
+  ELSE.
+    cl_demo_output=>write_data( out ).
+    cl_demo_output=>display( ).
+  ENDIF.
