@@ -17,7 +17,7 @@ You can add the created function module to achieve the automated VAT check in yo
 
 
 
-
+##
 <p>
 See also the following link:
 <a href="https://ec.europa.eu/taxation_customs/vies/#/technical-information">https://ec.europa.eu/taxation_customs/vies/#/technical-information</a>.
