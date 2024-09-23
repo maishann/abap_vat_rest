@@ -7,7 +7,7 @@ Check the VATID number via a REST web service to the European Commission to vali
 
 ## Necessary Customizing to apply automatic VAT check in BP transaction
 
-To activate the additional check, you can go to transaction BUS3 and adjust the view BUP520 - Identification Numbers.
+To activate the additional check, you can go to transaction <b>BUS3</b> and adjust the view BUP520 - Identification Numbers.
 
 ![image](https://github.com/user-attachments/assets/08f23200-08f3-41ff-88db-b8469ecf379d)
 
