@@ -11,6 +11,18 @@
     <T100>
      <SPRSL>D</SPRSL>
      <ARBGB>ZBC_REST_JSON</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Ust-ID &amp;1 ist gültig und erfolgreich gegen das VIES-Portal geprüft.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>ZBC_REST_JSON</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Ust-ID &amp;1 ist nicht gültig, bitte korrigieren.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>D</SPRSL>
+     <ARBGB>ZBC_REST_JSON</ARBGB>
      <MSGNR>400</MSGNR>
      <TEXT>Bad Request</TEXT>
     </T100>

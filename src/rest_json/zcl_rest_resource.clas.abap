@@ -19,17 +19,24 @@ CLASS zcl_rest_resource DEFINITION
     CLASS-DATA mo_appl_log TYPE REF TO cl_bal_logobj.
 
     CLASS-METHODS get_method
-      RETURNING VALUE(rt_out) TYPE string_table.
+      IMPORTING VALUE(iv_country)      TYPE land1
+      CHANGING  ct_out                 TYPE string_table OPTIONAL
+      RETURNING VALUE(rv_is_available) TYPE abap_bool.
 
     CLASS-METHODS post_method
       IMPORTING VALUE(iv_countrycode) TYPE string
                 VALUE(iv_vatnumber)   TYPE string
-                iv_tradername         TYPE string OPTIONAL
-                iv_traderstreet       TYPE string OPTIONAL
-                iv_traderpostalcode   TYPE string OPTIONAL
-                iv_tradercity         TYPE string OPTIONAL
-                iv_tradercompanytype  TYPE string OPTIONAL
-      RETURNING VALUE(rt_out)         TYPE string_table.
+                iv_tradername         TYPE string       OPTIONAL
+                iv_traderstreet       TYPE string       OPTIONAL
+                iv_traderpostalcode   TYPE string       OPTIONAL
+                iv_tradercity         TYPE string       OPTIONAL
+                iv_tradercompanytype  TYPE string       OPTIONAL
+      CHANGING  ct_out                TYPE string_table OPTIONAL
+      RETURNING VALUE(rv_ustid_valid) TYPE abap_bool.
+
+    CLASS-METHODS is_country_eu
+      IMPORTING iv_country      TYPE land1
+      RETURNING VALUE(rv_is_eu) TYPE abap_bool.
 
   PRIVATE SECTION.
     CLASS-DATA mo_client_proxy          TYPE REF TO /iwfnd/cl_sutil_client_proxy.
@@ -51,7 +58,7 @@ CLASS zcl_rest_resource DEFINITION
 
     CLASS-METHODS web_request
       IMPORTING VALUE(it_request_header) TYPE /iwfnd/sutil_property_t
-      RETURNING VALUE(rt_out)            TYPE string_table
+      RETURNING VALUE(rt_out)            TYPE string_TABLE
       RAISING   zcx_rest.
 ENDCLASS.
 
@@ -64,6 +71,8 @@ CLASS zcl_rest_resource IMPLEMENTATION.
   METHOD get_method.
     DATA lt_req TYPE /iwfnd/sutil_property_t.
 
+    rv_is_available = abap_false.
+
     IF mo_client_proxy IS NOT BOUND.
       get_instance( ).
     ENDIF.
@@ -75,7 +84,7 @@ CLASS zcl_rest_resource IMPLEMENTATION.
                     value = 'https://ec.europa.eu/taxation_customs/vies/rest-api//check-status' ) TO lt_req.
 
     TRY.
-        rt_out = web_request( it_request_header = lt_req[] ).
+        ct_out = web_request( it_request_header = lt_req[] ).
       CATCH zcx_rest INTO DATA(error).
         IF mo_appl_log IS NOT BOUND.
           TRY.
@@ -97,10 +106,32 @@ CLASS zcl_rest_resource IMPLEMENTATION.
           CATCH cx_bal_exception. " Ausnahmeklasse für BAL OO Framework
         ENDTRY.
     ENDTRY.
+
+    LOOP AT ct_out ASSIGNING FIELD-SYMBOL(<out>).
+      IF <out> CS 'CountryCode'.
+        " TODO: variable is assigned but never used (ABAP cleaner)
+        SPLIT <out> AT '"' INTO DATA(str1) DATA(str2) DATA(str3) DATA(str4) DATA(str5).
+        IF iv_country <> str4.
+          CONTINUE.
+        ELSE.
+          DATA(right_country) = abap_true.
+        ENDIF.
+      ELSEIF <out> CS 'availability' AND right_country = abap_true.
+        CLEAR: str1,
+               str2,
+               str3,
+               str4,
+               str5.
+        SPLIT <out> AT '"' INTO str1 str2 str3 str4 str5.
+        rv_is_available = COND #( WHEN str4 = 'Available' THEN abap_true ELSE abap_false ).
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
   METHOD post_method.
     DATA lt_req TYPE /iwfnd/sutil_property_t.
+
+    rv_ustid_valid = abap_false.
 
     DATA(lv_struc) = VALUE ty_post_struc( country_code                = iv_countrycode
                                           vat_number                  = iv_vatnumber
@@ -131,7 +162,7 @@ CLASS zcl_rest_resource IMPLEMENTATION.
                     value = 'https://ec.europa.eu/taxation_customs/vies/rest-api//check-vat-number' ) TO lt_req.
 
     TRY.
-        rt_out = web_request( it_request_header = lt_req[] ).
+        ct_out = web_request( it_request_header = lt_req[] ).
       CATCH zcx_rest INTO DATA(error).
         IF mo_appl_log IS NOT BOUND.
           TRY.
@@ -152,8 +183,16 @@ CLASS zcl_rest_resource IMPLEMENTATION.
             mo_appl_log->save( IMPORTING et_lognumbers = DATA(lob_number) ).
           CATCH cx_bal_exception. " Ausnahmeklasse für BAL OO Framework
         ENDTRY.
-
     ENDTRY.
+    LOOP AT ct_out ASSIGNING FIELD-SYMBOL(<out>).
+      IF <out> CS 'valid'.
+        SPLIT <out> AT ':' INTO DATA(str1) DATA(str2).
+        REPLACE ALL OCCURRENCES OF ',' IN str2 WITH ''.
+        str2 = condense( str2 ).
+        rv_ustid_valid = COND #( WHEN str2 = 'true' THEN abap_true ELSE abap_false ).
+        EXIT.
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
   METHOD web_request.
@@ -207,5 +246,35 @@ CLASS zcl_rest_resource IMPLEMENTATION.
         RAISE EXCEPTION NEW zcx_rest( textid = zcx_rest=>internal_server_error ).
       WHEN OTHERS.
     ENDCASE.
+  ENDMETHOD.
+
+  METHOD is_country_eu.
+    TYPES ty_tt_t005 TYPE SORTED TABLE OF t005 WITH UNIQUE KEY land1.
+    STATICS countries TYPE ty_tt_t005.
+
+    DATA country   TYPE t005.
+    DATA row_index TYPE sy-tabix.
+
+    rv_is_eu = abap_false.
+    IF iv_country IS INITIAL.
+      RETURN.
+    ENDIF.
+
+    READ TABLE countries WITH KEY land1 = iv_country INTO country BINARY SEARCH.
+    row_index = sy-tabix.
+
+    IF sy-subrc = 0.
+      rv_is_eu = country-xegld.
+      RETURN.
+    ENDIF.
+
+    SELECT SINGLE * FROM t005 INTO country WHERE land1 = iv_country.
+
+    IF sy-subrc <> 0.
+      RETURN.
+    ENDIF.
+    INSERT country INTO countries INDEX row_index.
+
+    rv_is_eu = country-xegld.
   ENDMETHOD.
 ENDCLASS.

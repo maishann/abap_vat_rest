@@ -17,6 +17,12 @@
      <LENGTH>28</LENGTH>
     </item>
     <item>
+     <ID>I</ID>
+     <KEY>M01</KEY>
+     <ENTRY>Steuerprüfung ist im Land</ENTRY>
+     <LENGTH>50</LENGTH>
+    </item>
+    <item>
      <ID>R</ID>
      <ENTRY>Test Rest-Webservice</ENTRY>
      <LENGTH>20</LENGTH>
