@@ -1,4 +1,4 @@
-# abap_vat_rest
+# ABAP_VAT_REST Service
 Check the VATID number via a REST web service to the European Commission to validate if the VAT ID is valid for your customer/vendor.
 
 
