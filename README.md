@@ -8,9 +8,10 @@ See also the following link:
 
 ## Necessary Customizing to apply automatic VAT check in BP transaction
 
-Go to transaction BUS3 and adjust the view BUP520 - Identification Number to activate the additional check.
+Go to transaction BUS3 and adjust the view BUP520 - Identification Numbers to activate the additional check.
 
 ![image](https://github.com/user-attachments/assets/08f23200-08f3-41ff-88db-b8469ecf379d)
 
+Add the created function module to achieve the automated VAT check in your SAP system.
 
 ![image](https://github.com/user-attachments/assets/d137ed70-56b7-4c4b-90e2-825d4ca0537d)
