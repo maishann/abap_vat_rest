@@ -1,8 +1,5 @@
-[<img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/96/external-markdown-a-lightweight-markup-language-with-plain-text-formatting-syntax-logo-filled-tal-revivo.png" align="right" width="25%" padding-right="350">]()
-
 # `ABAP_VAT_REST.GIT`
 
-#### <code>❯ REPLACE-ME</code>
 
 <p align="left">
 	<!-- Shields.io badges disabled, using skill icons. --></p>
