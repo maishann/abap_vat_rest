@@ -1,22 +1,10 @@
 # `ABAP_VAT_REST.GIT`
 
-
-<p align="left">
-	<!-- Shields.io badges disabled, using skill icons. --></p>
-<p align="left">
-		<em>Built with the tools and technologies:</em>
-</p>
-<p align="center">
-	<a href="https://skillicons.dev">
-		<img src="https://skillicons.dev/icons?i=md&theme=light">
-	</a></p>
-
 <br>
 
 ##### 🔗 Table of Contents
 
 - [📍 Overview](#-overview)
-- [👾 Features](#-features)
 - [📂 Repository Structure](#-repository-structure)
 - [🧩 Modules](#-modules)
 - [🚀 Getting Started](#-getting-started)
@@ -24,7 +12,6 @@
     - [📦 Installation](#-installation)
     - [🤖 Usage](#-usage)
     - [🧪 Tests](#-tests)
-- [📌 Project Roadmap](#-project-roadmap)
 - [🤝 Contributing](#-contributing)
 - [🎗 License](#-license)
 - [🙌 Acknowledgments](#-acknowledgments)
@@ -32,12 +19,6 @@
 ---
 
 ## 📍 Overview
-
-<code>❯ REPLACE-ME</code>
-
----
-
-## 👾 Features
 
 <code>❯ REPLACE-ME</code>
 
@@ -93,7 +74,15 @@ Build the project from source:
 
 3. Install the required dependencies:
 ```sh
-❯ ❯ INSERT-INSTALL-COMMANDS
+## Necessary Customizing to apply automatic VAT check in BP transaction
+
+To activate the additional check, you can go to transaction <b>BUS3</b> and adjust the view <b><u>BUP520 - Identification Numbers</u></b>.
+
+![image](https://github.com/user-attachments/assets/08f23200-08f3-41ff-88db-b8469ecf379d)
+
+You can add the created function module to achieve the automated VAT check in your SAP system.
+
+![image](https://github.com/user-attachments/assets/d137ed70-56b7-4c4b-90e2-825d4ca0537d)
 ```
 
 ### 🤖 Usage
@@ -103,24 +92,6 @@ To run the project, execute the following command:
 ```sh
 ❯ ❯ INSERT-RUN-COMMANDS
 ```
-
-### 🧪 Tests
-
-Execute the test suite using the following command:
-
-```sh
-❯ ❯ INSERT-TEST-COMMANDS
-```
-
----
-
-## 📌 Project Roadmap
-
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
 
 ## 🤝 Contributing
 
@@ -175,24 +146,6 @@ This project is protected under the [SELECT-A-LICENSE](https://choosealicense.co
 
 ## 🙌 Acknowledgments
 
-- List any resources, contributors, inspiration, etc. here.
+- <a href="https://ec.europa.eu/taxation_customs/vies/#/technical-information">https://ec.europa.eu/taxation_customs/vies/#/technical-information</a>
 
 ---
-
-## Necessary Customizing to apply automatic VAT check in BP transaction
-
-To activate the additional check, you can go to transaction <b>BUS3</b> and adjust the view <b><u>BUP520 - Identification Numbers</u></b>.
-
-![image](https://github.com/user-attachments/assets/08f23200-08f3-41ff-88db-b8469ecf379d)
-
-You can add the created function module to achieve the automated VAT check in your SAP system.
-
-![image](https://github.com/user-attachments/assets/d137ed70-56b7-4c4b-90e2-825d4ca0537d)
-
-
-
-##
-<p>
-See also the following link:
-<a href="https://ec.europa.eu/taxation_customs/vies/#/technical-information">https://ec.europa.eu/taxation_customs/vies/#/technical-information</a>.
-</p>
