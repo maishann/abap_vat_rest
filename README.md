@@ -17,7 +17,7 @@
 
 ## 📍 Overview
 
-<code>❯ REPLACE-ME</code>
+<code>❯ REST web service to check a VAT ID against the VIES portal.</code>
 
 ---
 
