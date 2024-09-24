@@ -1,6 +1,76 @@
+[<img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/96/external-markdown-a-lightweight-markup-language-with-plain-text-formatting-syntax-logo-filled-tal-revivo.png" align="right" width="25%" padding-right="350">]()
 
 # `ABAP_VAT_REST.GIT`
-Check the VATID number via a REST web service to the European Commission to validate if the VAT ID is valid for your customer/vendor.
+
+#### <code>❯ REPLACE-ME</code>
+
+<p align="left">
+	<!-- Shields.io badges disabled, using skill icons. --></p>
+<p align="left">
+		<em>Built with the tools and technologies:</em>
+</p>
+<p align="center">
+	<a href="https://skillicons.dev">
+		<img src="https://skillicons.dev/icons?i=md&theme=light">
+	</a></p>
+
+<br>
+
+##### 🔗 Table of Contents
+
+- [📍 Overview](#-overview)
+- [👾 Features](#-features)
+- [📂 Repository Structure](#-repository-structure)
+- [🧩 Modules](#-modules)
+- [🚀 Getting Started](#-getting-started)
+    - [🔖 Prerequisites](#-prerequisites)
+    - [📦 Installation](#-installation)
+    - [🤖 Usage](#-usage)
+    - [🧪 Tests](#-tests)
+- [📌 Project Roadmap](#-project-roadmap)
+- [🤝 Contributing](#-contributing)
+- [🎗 License](#-license)
+- [🙌 Acknowledgments](#-acknowledgments)
+
+---
+
+## 📍 Overview
+
+<code>❯ REPLACE-ME</code>
+
+---
+
+## 👾 Features
+
+<code>❯ REPLACE-ME</code>
+
+---
+
+## 📂 Repository Structure
+
+```sh
+└── abap_vat_rest.git/
+    ├── README.md
+    └── src
+        └── rest_json
+```
+
+---
+
+## 🧩 Modules
+
+<details closed><summary>src.rest_json</summary>
+
+| File | Summary |
+| --- | --- |
+| [zcl_rest_resource.clas.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/zcl_rest_resource.clas.abap) | <code>❯ REPLACE-ME</code> |
+| [zbc_bp_tax.fugr.zbc_vies_bupa_pai_bup520.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/zbc_bp_tax.fugr.zbc_vies_bupa_pai_bup520.abap) | <code>❯ REPLACE-ME</code> |
+| [ztest_rest_new.prog.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/ztest_rest_new.prog.abap) | <code>❯ REPLACE-ME</code> |
+| [zbc_bp_tax.fugr.lzbc_bp_taxtop.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/zbc_bp_tax.fugr.lzbc_bp_taxtop.abap) | <code>❯ REPLACE-ME</code> |
+| [zbc_bp_tax.fugr.saplzbc_bp_tax.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/zbc_bp_tax.fugr.saplzbc_bp_tax.abap) | <code>❯ REPLACE-ME</code> |
+| [zcx_rest.clas.abap](https://github.com/maishann/abap_vat_rest.git/blob/main/src/rest_json/zcx_rest.clas.abap) | <code>❯ REPLACE-ME</code> |
+
+</details>
 
 ---
 
@@ -8,7 +78,7 @@ Check the VATID number via a REST web service to the European Commission to vali
 
 ### 🔖 Prerequisites
 
-**None**: `version 0.0.1`
+**None**: `version x.y.z`
 
 ### 📦 Installation
 
@@ -29,7 +99,88 @@ Build the project from source:
 ❯ ❯ INSERT-INSTALL-COMMANDS
 ```
 
+### 🤖 Usage
 
+To run the project, execute the following command:
+
+```sh
+❯ ❯ INSERT-RUN-COMMANDS
+```
+
+### 🧪 Tests
+
+Execute the test suite using the following command:
+
+```sh
+❯ ❯ INSERT-TEST-COMMANDS
+```
+
+---
+
+## 📌 Project Roadmap
+
+- [X] **`Task 1`**: <strike>Implement feature one.</strike>
+- [ ] **`Task 2`**: Implement feature two.
+- [ ] **`Task 3`**: Implement feature three.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here are several ways you can contribute:
+
+- **[Report Issues](https://github.com/maishann/abap_vat_rest.git/issues)**: Submit bugs found or log feature requests for the `abap_vat_rest.git` project.
+- **[Submit Pull Requests](https://github.com/maishann/abap_vat_rest.git/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **[Join the Discussions](https://github.com/maishann/abap_vat_rest.git/discussions)**: Share your insights, provide feedback, or ask questions.
+
+<details closed>
+<summary>Contributing Guidelines</summary>
+
+1. **Fork the Repository**: Start by forking the project repository to your github account.
+2. **Clone Locally**: Clone the forked repository to your local machine using a git client.
+   ```sh
+   git clone https://github.com/maishann/abap_vat_rest.git
+   ```
+3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
+   ```sh
+   git checkout -b new-feature-x
+   ```
+4. **Make Your Changes**: Develop and test your changes locally.
+5. **Commit Your Changes**: Commit with a clear message describing your updates.
+   ```sh
+   git commit -m 'Implemented new feature x.'
+   ```
+6. **Push to github**: Push the changes to your forked repository.
+   ```sh
+   git push origin new-feature-x
+   ```
+7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
+8. **Review**: Once your PR is reviewed and approved, it will be merged into the main branch. Congratulations on your contribution!
+</details>
+
+<details closed>
+<summary>Contributor Graph</summary>
+<br>
+<p align="left">
+   <a href="https://github.com{/maishann/abap_vat_rest.git/}graphs/contributors">
+      <img src="https://contrib.rocks/image?repo=maishann/abap_vat_rest.git">
+   </a>
+</p>
+</details>
+
+---
+
+## 🎗 License
+
+This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+
+---
+
+## 🙌 Acknowledgments
+
+- List any resources, contributors, inspiration, etc. here.
+
+---
 
 ## Necessary Customizing to apply automatic VAT check in BP transaction
 
