@@ -1,8 +1,33 @@
-[<img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/96/external-markdown-a-lightweight-markup-language-with-plain-text-formatting-syntax-logo-filled-tal-revivo.png" align="right" width="25%" padding-right="350">]()
+
 # `ABAP_VAT_REST.GIT`
 Check the VATID number via a REST web service to the European Commission to validate if the VAT ID is valid for your customer/vendor.
 
+---
 
+## 🚀 Getting Started
+
+### 🔖 Prerequisites
+
+**None**: `version x.y.z`
+
+### 📦 Installation
+
+Build the project from source:
+
+1. Clone the abap_vat_rest.git repository:
+```sh
+❯ git clone https://github.com/maishann/abap_vat_rest.git
+```
+
+2. Navigate to the project directory:
+```sh
+❯ cd abap_vat_rest.git
+```
+
+3. Install the required dependencies:
+```sh
+❯ ❯ INSERT-INSTALL-COMMANDS
+```
 
 
 
