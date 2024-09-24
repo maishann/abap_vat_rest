@@ -8,7 +8,7 @@ Check the VATID number via a REST web service to the European Commission to vali
 
 ### 🔖 Prerequisites
 
-**None**: `version x.y.z`
+**None**: `version 0.0.1`
 
 ### 📦 Installation
 
